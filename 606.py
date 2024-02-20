@@ -33,7 +33,7 @@ def save_values():
     periodo = date_entry.get()
 
     # Create the filename
-    filename = f"DGII_F_606_101735122_{periodo}.txt"
+    filename = f"DGII_F_606_{rnc_compania}_{periodo}.txt"
 
     with open(filename, "w") as file:
         formatted_values = f"606|{rnc_compania}|{periodo}|Registros\n"
@@ -41,6 +41,7 @@ def save_values():
     messagebox.showinfo("Save", f"Values have been saved to {filename} successfully!")
 
 def append_values():
+    rnc_compania = id_entry.get()
     periodo = date_entry.get()
     rnc_cedula = entry_RNC.get()
     tipo_id = entry_RNC_Type.get()
@@ -65,7 +66,7 @@ def append_values():
     monto_propina_legal = entry_monto_propina_legal.get()
     forma_pago = selected_forma_pago.get()
 
-    filename = f"DGII_F_606_101735122_{periodo}.txt"
+    filename = f"DGII_F_606_{rnc_compania}_{periodo}.txt"
 
     formatted_values = f"{rnc_cedula}|{tipo_id}|{tipo_bienes_servicios}|{ncf}|{ncf_documento_modificado}|{fecha_comprobante_pago}|{fecha_comprobante_pago}|{monto_facturado_servicios}|{monto_facturado_bienes}|{total_monto_facturado}|{itbis_facturado}|{itbis_retenido}|{itbis_proporcionalidad}|{itbis_llevado_costo}|{itbis_por_adelantar}|{itbis_percibido_compras}|{tipo_retencion_isr}|{monto_retencion_renta}|{isr_percibido_compras}|{impuesto_selectivo_consumo}|{otros_impuestos_tasas}|{monto_propina_legal}|{forma_pago}\n"
 
@@ -74,7 +75,7 @@ def append_values():
 
 # Create the main window
 root = tk.Tk()
-root.title("606 Fesisa")
+root.title("606")
 
 # Label for RNC Compañia
 id_label = tk.Label(root, text="RNC Compañia:")
@@ -83,7 +84,7 @@ id_label.grid(row=0, column=0, padx=10, pady=5, sticky="w")
 # Entry widget for RNC Compañia
 id_entry = tk.Entry(root)
 id_entry.grid(row=0, column=1, padx=10, pady=5)
-id_entry.insert(0, "101735122")  # Set default value
+id_entry.insert(0, "")  # Set default value for the RNC 
 
 # Label for Periodo
 date_label = tk.Label(root, text="Periodo:")
